@@ -1,0 +1,275 @@
+[
+    {
+        "timestamp": "2024-03-06 16:29:01",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    vector<int> ans;\n\n    int i=0;\n    int j=k-1;\n    int max = *max_element(a.begin(), a.begin()+k+1);\n    ans.push_back(max);\n\n    return ans;\n}\n",
+        "programHash": "0bcff5f8d3760f3739527f8c8fc51cc819f91a521eb0a4b8f29e1c3ee2942c06",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 16:29:47",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    vector<int> ans;\n\n    int i=0;\n    int j=k-1;\n    int max = *max_element(a.begin(), a.begin()+k);\n    ans.push_back(max);\n\n    return ans;\n}\n",
+        "programHash": "deaa8f9e493570cb09e7415aaf700005bf385bd5c88ff94f1dd71e6b3d0888dd",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 16:32:47",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int left=0;\n    int right=k-1;\n    int max = *max_element(a.begin(), a.begin()+k);\n    ans.push_back(max);\n    int maxi = *max_element(a.begin(), a.begin()+k);\n    ans.push_back(maxi);\n    // while(right<n){\n\n    // }\n\n    return ans;\n}\n",
+        "programHash": "10773f8e42d3402b381fbea903f2e0a2cac72c9ee60d29828817dc903789f545",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 16:36:25",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int left=0;\n    int right=k-1;\n    int max = INT_MIN;\n    int maxi = 0;\n    for(int i=0;i<n;i++){\n        if(a[i]>max){\n            max = a[i];\n            maxi = i;\n        }\n    }\n    ans.push_back(max);\n    ans.push_back(maxi);\n    // while(right<n){\n\n    // }\n\n    return ans;\n}\n",
+        "programHash": "24e544cb0249d3f0b80048e4b14579f211524f9100fbdb1e9c0a6a3ceb13a989",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 16:46:51",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int max = INT_MIN;\n    int maxi = 0;\n    for(int i=0;i<n;i++){\n        if(a[i]>max){\n            max = a[i];\n            maxi = i;\n        }\n    }\n    ans.push_back(max);\n    ans.push_back(maxi);\n    priority_queue<pair<int, int>> pq;\n    pq.push({max,maxi});\n\n    for(int i=k;i<n;i++){\n\n        if(a[k]>max){\n            max = a[k];\n            ans.push_back(max);\n            continue;\n        }\n        maxi--;\n        if(maxi==0){\n            pq.pop();\n            max = pq.top().first;\n            maxi = pq.top().second;\n            ans.push_back(max);\n        }\n    }\n\n    return ans;\n}\n\n// vector<int> roomUsage(vector<vector<int>>& intervals, int n) {\n//     sort(intervals.begin(), intervals.end());\n//     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;\n//     vector<int> usage(n, 0);\n//     int room = 0;\n//     for (int i = 0; i < intervals.size(); i++) {\n//         if (!pq.empty() && intervals[i][0] >= pq.top().first) {\n//             room = pq.top().second;\n//             pq.pop();\n//         } else if (room < n) {\n//             usage[room]++;\n//         } else {\n//             continue;\n//         }\n//         pq.push({intervals[i][1], room});\n//         if (room < n - 1) {\n//             room++;\n//         }\n//     }\n//     return usage;\n// }",
+        "programHash": "e94dcb2a04fb9c8539592f4217ef84e1c4db23bcd21ae6bd6ab74b87ba68e2c7",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 16:48:34",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int max = INT_MIN;\n    int maxi = 0;\n    for(int i=0;i<n;i++){\n        if(a[i]>max){\n            max = a[i];\n            maxi = i;\n        }\n    }\n    ans.push_back(max);\n    ans.push_back(maxi);\n    priority_queue<pair<int, int>> pq;\n    pq.push({max,maxi});\n\n    for(int i=k;i<n;i++){\n\n        if(a[k]>max){\n            max = a[k];\n            ans.push_back(max);\n            continue;\n        }\n        maxi--;\n        if(maxi==0){\n            pq.pop();\n            pq.push({max,maxi});\n            max = pq.top().first;\n            maxi = pq.top().second;\n            ans.push_back(max);\n        }\n    }\n\n    return ans;\n}\n\n// vector<int> roomUsage(vector<vector<int>>& intervals, int n) {\n//     sort(intervals.begin(), intervals.end());\n//     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;\n//     vector<int> usage(n, 0);\n//     int room = 0;\n//     for (int i = 0; i < intervals.size(); i++) {\n//         if (!pq.empty() && intervals[i][0] >= pq.top().first) {\n//             room = pq.top().second;\n//             pq.pop();\n//         } else if (room < n) {\n//             usage[room]++;\n//         } else {\n//             continue;\n//         }\n//         pq.push({intervals[i][1], room});\n//         if (room < n - 1) {\n//             room++;\n//         }\n//     }\n//     return usage;\n// }",
+        "programHash": "c4e9ac82ed4ece498fcf89689fad933e56b9cf387f33d621326ea6a927ff1ca6",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 16:50:58",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int max = INT_MIN;\n    int maxi = 0;\n    for(int i=0;i<n;i++){\n        if(a[i]>max){\n            max = a[i];\n            maxi = i;\n        }\n    }\n    ans.push_back(max);\n    ans.push_back(maxi);\n    priority_queue<pair<int, int>> pq;\n    pq.push({max,maxi});\n\n    for(int i=k;i<n;i++){\n        // if(a[k]>max){\n        //     max = a[k];\n        //     ans.push_back(max);\n        //     continue;\n        // }\n        // maxi--;\n        // if(maxi==0){\n        \n            pq.push({a[k],k});\n            max = pq.top().first;\n            maxi = pq.top().second;\n            ans.push_back(max);\n        \n        // }\n    }\n\n    return ans;\n}\n\n// vector<int> roomUsage(vector<vector<int>>& intervals, int n) {\n//     sort(intervals.begin(), intervals.end());\n//     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;\n//     vector<int> usage(n, 0);\n//     int room = 0;\n//     for (int i = 0; i < intervals.size(); i++) {\n//         if (!pq.empty() && intervals[i][0] >= pq.top().first) {\n//             room = pq.top().second;\n//             pq.pop();\n//         } else if (room < n) {\n//             usage[room]++;\n//         } else {\n//             continue;\n//         }\n//         pq.push({intervals[i][1], room});\n//         if (room < n - 1) {\n//             room++;\n//         }\n//     }\n//     return usage;\n// }",
+        "programHash": "1bc81483a3199e370380ac982584313ea95f60d5948e10a5f4d39e662c2d532c",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 16:52:39",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int max = INT_MIN;\n    int maxi = 0;\n    for(int i=0;i<n;i++){\n        if(a[i]>max){\n            max = a[i];\n            maxi = i;\n        }\n    }\n    ans.push_back(max);\n    priority_queue<pair<int, int>> pq;\n    pq.push({max,maxi});\n\n    for(int i=k;i<n;i++){\n        // if(a[k]>max){\n        //     max = a[k];\n        //     ans.push_back(max);\n        //     continue;\n        // }\n        // maxi--;\n        // if(maxi==0){\n        \n            pq.push({a[k],k});\n            max = pq.top().first;\n            maxi = pq.top().second;\n            ans.push_back(max);\n        \n        // }\n    }\n\n    return ans;\n}\n\n// vector<int> roomUsage(vector<vector<int>>& intervals, int n) {\n//     sort(intervals.begin(), intervals.end());\n//     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;\n//     vector<int> usage(n, 0);\n//     int room = 0;\n//     for (int i = 0; i < intervals.size(); i++) {\n//         if (!pq.empty() && intervals[i][0] >= pq.top().first) {\n//             room = pq.top().second;\n//             pq.pop();\n//         } else if (room < n) {\n//             usage[room]++;\n//         } else {\n//             continue;\n//         }\n//         pq.push({intervals[i][1], room});\n//         if (room < n - 1) {\n//             room++;\n//         }\n//     }\n//     return usage;\n// }",
+        "programHash": "b03ba9d869bb9dca72e406d5f431879b60ac1a53b34be0d18c89ec14c89e1a01",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 16:56:20",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int max = INT_MIN;\n    int maxi = 0;\n    int lastmaxindex = 0;\n    for(int i=0;i<k;i++){\n        if(a[i]>max){\n            max = a[i];\n            maxi = i;\n        }\n    }\n    ans.push_back(max);\n    priority_queue<pair<int, int>> pq;\n    pq.push({max,maxi});\n\n    for(int i=k;i<n;i++){\n        // if(a[k]>max){\n        //     max = a[k];\n        //     ans.push_back(max);\n        //     continue;\n        // }\n        // maxi--;\n        // if(maxi==0){\n        \n        pq.push({a[k],k});\n        max = pq.top().first;\n        maxi = pq.top().second;\n        ans.push_back(max);\n        \n        \n        // }\n    }\n\n    return ans;\n}\n",
+        "programHash": "69528b9e82b774c4678accc50cfcd03b6dea7e2e6305ebb8179bf3ce3bd93d66",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 16:58:03",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int max = INT_MIN;\n    int maxi = 0;\n    int lastmaxindex = 0;\n    for(int i=0;i<k;i++){\n        if(a[i]>max){\n            max = a[i];\n            maxi = i;\n        }\n    }\n    ans.push_back(max);\n    priority_queue<pair<int, int>> pq;\n    pq.push({max,maxi});\n\n    for(int i=k;i<n;i++){\n        // if(a[k]>max){\n        //     max = a[k];\n        //     ans.push_back(max);\n        //     continue;\n        // }\n        // maxi--;\n        // if(maxi==0){\n        if(a[k]>=max){\n        pq.push({a[k],k});\n        max = pq.top().first;\n        maxi = pq.top().second;\n        ans.push_back(max);\n        }else{\n            maxi--;\n            if(maxi==0) pq.pop();\n        }\n        \n        // }\n    }\n\n    return ans;\n}\n",
+        "programHash": "2ead163a01fd9b4c486f5111a570044dec56e4ad8a84cad28d31d8791ccf5e93",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 16:58:20",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int max = INT_MIN;\n    int maxi = 0;\n    int lastmaxindex = 0;\n    for(int i=0;i<k;i++){\n        if(a[i]>max){\n            max = a[i];\n            maxi = i;\n        }\n    }\n    ans.push_back(max);\n    priority_queue<pair<int, int>> pq;\n    pq.push({max,maxi});\n\n    for(int i=k;i<n;i++){\n        // if(a[k]>max){\n        //     max = a[k];\n        //     ans.push_back(max);\n        //     continue;\n        // }\n        // maxi--;\n        // if(maxi==0){\n        if(a[k]>max){\n        pq.push({a[k],k});\n        max = pq.top().first;\n        maxi = pq.top().second;\n        ans.push_back(max);\n        }else{\n            maxi--;\n            if(maxi==0) pq.pop();\n        }\n        \n        // }\n    }\n\n    return ans;\n}\n",
+        "programHash": "7cfca8eb212d424716cea52a1606d648c3eb8816b76ae87f2914f63d3d9737d6",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 16:59:25",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int max = INT_MIN;\n    int maxi = 0;\n    int lastmaxindex = 0;\n    for(int i=0;i<k;i++){\n        if(a[i]>max){\n            max = a[i];\n            maxi = i;\n        }\n    }\n    ans.push_back(max);\n    priority_queue<pair<int, int>> pq;\n    pq.push({max,maxi});\n\n    for(int i=k;i<n;i++){\n        // if(a[k]>max){\n        //     max = a[k];\n        //     ans.push_back(max);\n        //     continue;\n        // }\n        // maxi--;\n        // if(maxi==0){\n        if(a[k]>=max){\n        pq.push({a[k],k});\n        max = pq.top().first;\n        maxi = pq.top().second;\n        ans.push_back(max);\n        }else{\n            maxi--;\n            if(maxi==0) pq.pop();\n            max = pq.top().first;\n            maxi = pq.top().second;\n            ans.push_back(max);\n        }\n        \n        // }\n    }\n\n    return ans;\n}\n",
+        "programHash": "ce90233fb4d8ee066c0bc1176a6fd6eb110facf576e36694da9d22d19e452f16",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 16:59:33",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int max = INT_MIN;\n    int maxi = 0;\n    int lastmaxindex = 0;\n    for(int i=0;i<k;i++){\n        if(a[i]>max){\n            max = a[i];\n            maxi = i;\n        }\n    }\n    ans.push_back(max);\n    priority_queue<pair<int, int>> pq;\n    pq.push({max,maxi});\n\n    for(int i=k;i<n;i++){\n        // if(a[k]>max){\n        //     max = a[k];\n        //     ans.push_back(max);\n        //     continue;\n        // }\n        // maxi--;\n        // if(maxi==0){\n        if(a[k]>max){\n        pq.push({a[k],k});\n        max = pq.top().first;\n        maxi = pq.top().second;\n        ans.push_back(max);\n        }else{\n            maxi--;\n            if(maxi==0) pq.pop();\n            max = pq.top().first;\n            maxi = pq.top().second;\n            ans.push_back(max);\n        }\n        \n        // }\n    }\n\n    return ans;\n}\n",
+        "programHash": "98bf009d44e7789b72b0c42bb6ca301b1b294cbce1bb13ffb8adef99c3ce7c11",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:02:52",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int max = INT_MIN;\n    int maxi = 0;\n    int lastmaxindex = 0;\n    // for(int i=0;i<k;i++){\n    //     if(a[i]>max){\n    //         max = a[i];\n    //         maxi = i;\n    //     }\n    // }\n    // ans.push_back(max);\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n\n    // for(int i=k;i<n;i++){\n    //     // if(a[k]>max){\n    //     //     max = a[k];\n    //     //     ans.push_back(max);\n    //     //     continue;\n    //     // }\n    //     // maxi--;\n    //     // if(maxi==0){\n    //     if(a[k]>=max){\n    //     pq.push({a[k],k});\n    //     max = pq.top().first;\n    //     maxi = pq.top().second;\n    //     ans.push_back(max);\n    //     }else{\n    //         maxi--;\n    //         if(maxi==0) pq.pop();\n    //         max = pq.top().first;\n    //         maxi = pq.top().second;\n    //         ans.push_back(max);\n    //     }\n        \n    //     // }\n    // }\n\n    return ans;\n}\n",
+        "programHash": "496d95e4b44a1e96322e318fa27f0091a9afbc0b8dfe860d4c91cf28fe5cd72f",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:03:18",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int max = INT_MIN;\n    int maxi = 0;\n    int lastmaxindex = 0;\n    // for(int i=0;i<k;i++){\n    //     if(a[i]>max){\n    //         max = a[i];\n    //         maxi = i;\n    //     }\n    // }\n    // ans.push_back(max);\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    ans.push_back(pq.top().second);\n\n    // for(int i=k;i<n;i++){\n    //     // if(a[k]>max){\n    //     //     max = a[k];\n    //     //     ans.push_back(max);\n    //     //     continue;\n    //     // }\n    //     // maxi--;\n    //     // if(maxi==0){\n    //     if(a[k]>=max){\n    //     pq.push({a[k],k});\n    //     max = pq.top().first;\n    //     maxi = pq.top().second;\n    //     ans.push_back(max);\n    //     }else{\n    //         maxi--;\n    //         if(maxi==0) pq.pop();\n    //         max = pq.top().first;\n    //         maxi = pq.top().second;\n    //         ans.push_back(max);\n    //     }\n        \n    //     // }\n    // }\n\n    return ans;\n}\n",
+        "programHash": "3972c706f48bd4bc40cfc53c2a52849caf816a526350dedb4d17507893e0208d",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:11:51",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int max = INT_MIN;\n    int maxi = 0;\n    int lastindex = 0;\n    int l=0;\n    int r=k;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n\n    for(int i=k;i<n;i++){\n        \n        lastindex--;\n        if(lastindex==0) pq.pop();\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n        }\n        ans.push_back(pq.top().second);\n\n    }\n    return ans;\n}\n",
+        "programHash": "405c38e25e5320a714411733f3d2380816e03d4e566c7315796b060d7c87e409",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:14:05",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n\n    int max = INT_MIN;\n    int maxi = 0;\n    int lastindex = 0;\n    int l=0;\n    int r=k;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n\n    for(int i=k;i<n;i++){\n        \n        lastindex--;\n        if(lastindex==0) pq.pop();\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            continue;\n        }\n        pq.push({a[i],i});\n        ans.push_back(pq.top().second);\n\n    }\n    return ans;\n}\n",
+        "programHash": "120d603e84b842ad738e6f99ed25a4bfb5b775b914e10c0d37e5ca660498a8d7",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:15:06",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n\n    for(int i=k;i<n;i++){\n        \n        lastindex--;\n        if(lastindex==0) pq.pop();\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            continue;\n        }\n        pq.push({a[i],i});\n        ans.push_back(pq.top().second);\n\n    }\n    return ans;\n}\n",
+        "programHash": "eee6cf98d4a8d4156f57c568450b5e9db44be297a2640681eedc80905ccb88b6",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:15:22",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n\n    for(int i=k;i<n;i++){\n        \n        lastindex--;\n        if(lastindex==0) pq.pop();\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            continue;\n        }\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "801a7faa5bc3e2f228f85c8c3ebfea114be274a5d1ee5fa2cd6893ff04a645a6",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:15:56",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n\n    for(int i=k;i<n;i++){\n        \n        lastindex--;\n        if(lastindex==0) pq.pop();\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            ans.push_back(pq.top().first);\n            continue;\n        }\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "1ebba6ea28e3d3ef6fdd50eda73f68e4739f5bfa65371787a999c9a3080e98b7",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:27:15",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n\n    for(int i=k;i<n;i++){\n        \n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            ans.push_back(pq.top().first);\n            continue;\n        }\n        lastindex--;\n        if(lastindex==0) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "ffd9ba8feeee1ccf56cdae32cb10971135afd4ed8b7b70b612ffb214116682e3",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:27:48",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n\n    for(int i=k;i<n;i++){\n\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            ans.push_back(pq.top().first);\n            continue;\n        }\n        lastindex--;\n        if(lastindex==i) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "dab0ca9ef4ca0c2e807fbabb1b944eeb46a8f841b9d8fb4cf02a8f0a17c031fe",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:30:15",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = lastindex;\n\n    for(int i=k;i<n;i++){\n\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            counter=lastindex-i;\n            ans.push_back(pq.top().first);\n            continue;\n        }\n        counter++;\n        if(counter==k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "fab949b2523ed91ed4ac634033878255787e868a5c6c65c6e24d3f5e24a1393a",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:31:35",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = lastindex;\n\n    for(int i=k;i<n;i++){\n\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            counter=0;\n            ans.push_back(pq.top().first);\n            continue;\n        }\n        counter++;\n        if(counter==k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "bb42fc856b96f7544e2d369f9d4999440d00e8dd37fd45e61a2343427f7b40f8",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:35:16",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = 0;\n\n    for(int i=k;i<n;i++){\n\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            counter=0;\n            ans.push_back(pq.top().first);\n            continue;\n        }\n        counter++;\n        if(counter==k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "6744b7efc245adda04a842811c4a9cfb8837f940caf7ac8e24473022589c356a",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:35:41",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = 0;\n\n    for(int i=k;i<n;i++){\n\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            counter=0;\n            ans.push_back(pq.top().first);\n            continue;\n        }\n        counter++;\n        if(counter==k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "6744b7efc245adda04a842811c4a9cfb8837f940caf7ac8e24473022589c356a",
+        "testcase": "T2",
+        "testcasePassed": 1
+    },
+    {
+        "timestamp": "2024-03-06 17:35:53",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = 0;\n\n    for(int i=k;i<n;i++){\n\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            counter=0;\n            ans.push_back(pq.top().first);\n            continue;\n        }\n        counter++;\n        if(counter==k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "6744b7efc245adda04a842811c4a9cfb8837f940caf7ac8e24473022589c356a",
+        "testcase": "T3",
+        "testcasePassed": 1
+    },
+    {
+        "timestamp": "2024-03-06 17:40:38",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = 0;\n\n    for(int i=k;i<n;i++){\n\n    if(pq.top().second<k) pq.pop();\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            counter=0;\n            ans.push_back(pq.top().first);\n            continue;\n        }\n        counter++;\n        if(counter==k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "b90ee5783539e8f5376cc49c913413336358c69bda05968ee701ca3c9b81ce54",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:41:27",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = 0;\n\n    for(int i=k;i<n;i++){\n\n    if(pq.top().second<k) pq.pop();\n        // if(a[i]>=pq.top().first){\n        //     pq.push({a[i],i});\n        //     lastindex=pq.top().second;\n        //     counter=0;\n        //     ans.push_back(pq.top().first);\n        //     continue;\n        // }\n        // counter++;\n        // if(counter==k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "e763a72074294def3109401ce26032da37bd20c86d3f0cae26e17dbc097508c2",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:41:41",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = 0;\n\n    for(int i=k;i<n;i++){\n\n    if(pq.top().second<k+1) pq.pop();\n        // if(a[i]>=pq.top().first){\n        //     pq.push({a[i],i});\n        //     lastindex=pq.top().second;\n        //     counter=0;\n        //     ans.push_back(pq.top().first);\n        //     continue;\n        // }\n        // counter++;\n        // if(counter==k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "15a7abf943b7c60316086a88486887c257e16895e5a081fdf06ded31c0e22790",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:43:46",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = 0;\n\n    for(int i=k;i<n;i++){\n\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            counter=0;\n            if(pq.top().second<k) pq.pop();\n            ans.push_back(pq.top().first);\n            continue;\n        }\n        counter++;\n        if(counter==k) pq.pop();\n        if(pq.top().second<k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "134d68c151e20e4a4ceebc2b5ce6acfa2f1bf0bb882d4d11ec616b56af73d050",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:43:51",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = 0;\n\n    for(int i=k;i<n;i++){\n\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            counter=0;\n            if(pq.top().second<k) pq.pop();\n            ans.push_back(pq.top().first);\n            continue;\n        }\n        counter++;\n        if(counter==k) pq.pop();\n        if(pq.top().second<k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "134d68c151e20e4a4ceebc2b5ce6acfa2f1bf0bb882d4d11ec616b56af73d050",
+        "testcase": "T3",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:44:00",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = 0;\n\n    for(int i=k;i<n;i++){\n\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            counter=0;\n            if(pq.top().second<k) pq.pop();\n            ans.push_back(pq.top().first);\n            continue;\n        }\n        counter++;\n        if(counter==k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "77561f1344c3f400bcc37245aa872b933d66a7fd282db6e70f4e95ada9347afc",
+        "testcase": "T3",
+        "testcasePassed": 1
+    },
+    {
+        "timestamp": "2024-03-06 17:44:03",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = 0;\n\n    for(int i=k;i<n;i++){\n\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            counter=0;\n            if(pq.top().second<k) pq.pop();\n            ans.push_back(pq.top().first);\n            continue;\n        }\n        counter++;\n        if(counter==k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "77561f1344c3f400bcc37245aa872b933d66a7fd282db6e70f4e95ada9347afc",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:44:45",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = 0;\n\n    for(int i=k;i<n;i++){\n\n        // if(a[i]>=pq.top().first){\n        //     pq.push({a[i],i});\n        //     lastindex=pq.top().second;\n        //     counter=0;\n            \n        //     ans.push_back(pq.top().first);\n        //     continue;\n        // }\n        // counter++;\n        // if(counter==k) pq.pop();\n        if(pq.top().second<k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "fae1a32eb9b9aecab5f54a82ac0d0324b810e965c3fd85f70985357f1fbca2f0",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:47:46",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = 0;\n\n    for(int i=k;i<n;i++){\n\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            counter=0;\n            \n            ans.push_back(pq.top().first);\n            continue;\n        }\n        counter++;\n        if(counter==k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "3906f19675c54ae93374d046dad773446d0a9f1cd969cafe1110229a0612b8a8",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:47:48",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int, int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = 0;\n\n    for(int i=k;i<n;i++){\n\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            counter=0;\n            \n            ans.push_back(pq.top().first);\n            continue;\n        }\n        counter++;\n        if(counter==k) pq.pop();\n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n    return ans;\n}\n",
+        "programHash": "3906f19675c54ae93374d046dad773446d0a9f1cd969cafe1110229a0612b8a8",
+        "testcase": "T2",
+        "testcasePassed": 1
+    },
+    {
+        "timestamp": "2024-03-06 17:52:42",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<int, vector<int>> pq;\n    // for(int i=0;i<k;i++){\n    // pq.push({a[i],i});}\n    // ans.push_back(pq.top().first);\n    // lastindex = pq.top().second;\n    // int counter = 0;\n\n    // for(int i=k;i<n;i++){\n\n    //     if(a[i]>=pq.top().first){\n    //         pq.push({a[i],i});\n    //         lastindex=pq.top().second;\n    //         counter=0;\n            \n    //         ans.push_back(pq.top().first);\n    //         continue;\n    //     }\n    //     counter++;\n    //     if(counter==k) pq.pop();\n        \n    //     pq.push({a[i],i});\n    //     ans.push_back(pq.top().first);\n\n    // }\n\n    map<int,int> map;\n    for(int i=0;i<k;i++) pq.push(a[i]);\n    for(int i=0;i<k;i++)map[a[i]++];\n    for(int i=0;i<n-k+1;i++){\n        ans.push_back(pq.top());\n        pq.push(a[i+k]);\n        map[a[k+i]]++;\n        map[a[i]]--;\n        while(map[pq.top()==0]){\n            pq.pop();\n        }\n    }\n\n    return ans; \n}\n",
+        "programHash": "2c4a9719d5fd81afa28a91c40b001970abc004bf0beaf80d9f18c9949dbe57a4",
+        "testcase": "T2",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-03-06 17:54:30",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nvector<int> solve(vector<int> &a , int k){\n\n    int n = a.size();\n    vector<int> ans;\n    int lastindex = 0;\n    priority_queue<pair<int,int>> pq;\n    for(int i=0;i<k;i++){\n    pq.push({a[i],i});}\n    ans.push_back(pq.top().first);\n    lastindex = pq.top().second;\n    int counter = 0;\n\n    for(int i=k;i<n;i++){\n\n        if(a[i]>=pq.top().first){\n            pq.push({a[i],i});\n            lastindex=pq.top().second;\n            counter=0;\n            \n            ans.push_back(pq.top().first);\n            continue;\n        }\n        counter++;\n        if(counter==k) pq.pop();\n        \n        pq.push({a[i],i});\n        ans.push_back(pq.top().first);\n\n    }\n\n    // map<int,int> map;\n    // for(int i=0;i<k;i++) pq.push(a[i]);\n    // for(int i=0;i<k;i++)map[a[i]++];\n    // for(int i=0;i<n-k+1;i++){\n    //     ans.push_back(pq.top());\n    //     pq.push(a[i+k]);\n    //     map[a[k+i]]++;\n    //     map[a[i]]--;\n    //     while(map[pq.top()==0]){\n    //         pq.pop();\n    //     }\n    // }\n\n    return ans; \n}\n",
+        "programHash": "8b72476ba87e32f5af780b2b10a7da84eb373dae25dc20c971758b7820b67f68",
+        "testcase": "T2",
+        "testcasePassed": 1
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "timestamp": "2024-03-06 16:17:09",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int> &a , long long k){\n\n    int max_len = 0;\n    int l=0;\n    int n = a.size();\n    int i = 0;\n    int j = 0;\n    long long sum = a[0];\n    while(j<n){\n        while(i<j && sum>k){\n                sum-=a[i];\n                i++;\n            }\n        if(sum==k){\n            max_len = max(max_len, j-i+1);\n        }\n        j++;\n        if(j<n) sum += a[j];\n       \n    }\n    return max_len;\n}\n",
+        "programHash": "297a76c0c1a97986a506ac02065091702f57e560c1f66e0defb7a8c0da18b618",
+        "testcase": "T1",
+        "testcasePassed": 1
+    },
+    {
+        "timestamp": "2024-03-06 16:17:12",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int> &a , long long k){\n\n    int max_len = 0;\n    int l=0;\n    int n = a.size();\n    int i = 0;\n    int j = 0;\n    long long sum = a[0];\n    while(j<n){\n        while(i<j && sum>k){\n                sum-=a[i];\n                i++;\n            }\n        if(sum==k){\n            max_len = max(max_len, j-i+1);\n        }\n        j++;\n        if(j<n) sum += a[j];\n       \n    }\n    return max_len;\n}\n",
+        "programHash": "297a76c0c1a97986a506ac02065091702f57e560c1f66e0defb7a8c0da18b618",
+        "testcase": "T2",
+        "testcasePassed": 1
+    },
+    {
+        "timestamp": "2024-03-06 16:17:15",
+        "program": "#include <bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int> &a , long long k){\n\n    int max_len = 0;\n    int l=0;\n    int n = a.size();\n    int i = 0;\n    int j = 0;\n    long long sum = a[0];\n    while(j<n){\n        while(i<j && sum>k){\n                sum-=a[i];\n                i++;\n            }\n        if(sum==k){\n            max_len = max(max_len, j-i+1);\n        }\n        j++;\n        if(j<n) sum += a[j];\n       \n    }\n    return max_len;\n}\n",
+        "programHash": "297a76c0c1a97986a506ac02065091702f57e560c1f66e0defb7a8c0da18b618",
+        "testcase": "T3",
+        "testcasePassed": 1
+    }
+]
