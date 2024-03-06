@@ -72,6 +72,29 @@ using namespace std;
         return len;
     }
 
+    bool checkInclusion(string s1, string s2) {
+        ios_base::sync_with_stdio(0);
+        cin.tie(NULL);
+        cout.tie(NULL);
+        int n=s1.size();
+        int m=s2.size();
+        if(n>m) return false;
+        unordered_map<char,int> m1;
+        unordered_map<char,int> m2;
+        for(int i=0;i<n;i++){
+            m1[s1[i]]++;
+            m2[s2[i]]++;
+        }
+        if(m1==m2) return true;
+        for(int i=n;i<m;i++){
+            m2[s2[i-n]]--;
+            if(m2[s2[i-n]]==0) m2.erase(s2[i-n]);
+            m2[s2[i]]++;
+            if(m1==m2) return true;
+        }
+        return false;
+    }
+
 
 
 
