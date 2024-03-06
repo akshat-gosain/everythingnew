@@ -1,0 +1,23 @@
+[
+    {
+        "timestamp": "2024-02-23 16:26:06",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    vector<vector<int>> ans;\n    sort(nums.begin(), nums.end());\n    for (int i = 0; i < n; i++) {\n        //remove duplicates:\n        if (i != 0 && nums[i] == nums[i - 1]) continue;\n\n        //moving 2 pointers:\n        int j = i + 1;\n        int k = n - 1;\n        while (j < k) {\n            int sum = nums[i] + nums[j] + nums[k];\n            if (sum < 0) {\n                j++;\n            }\n            else if (sum > 0) {\n                k--;\n            }\n            else {\n                vector<int> temp = {nums[i], nums[j], nums[k]};\n                ans.push_back(temp);\n                j++;\n                k--;\n                //skip the duplicates:\n                while (j < k && nums[j] == nums[j - 1]) j++;\n                while (j < k && nums[k] == nums[k + 1]) k--;\n            }\n        }\n    }\n    return ans.size();\n\n    return 0;\n}\n",
+        "programHash": "d7a1b807256ba86685ff7c2baf8a52680a8b0da64c1b7484a33a2f98c439f0ce",
+        "testcase": "T1",
+        "testcasePassed": 1
+    },
+    {
+        "timestamp": "2024-02-23 16:26:21",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    vector<vector<int>> ans;\n    sort(nums.begin(), nums.end());\n    for (int i = 0; i < n; i++) {\n        //remove duplicates:\n        if (i != 0 && nums[i] == nums[i - 1]) continue;\n\n        //moving 2 pointers:\n        int j = i + 1;\n        int k = n - 1;\n        while (j < k) {\n            int sum = nums[i] + nums[j] + nums[k];\n            if (sum < 0) {\n                j++;\n            }\n            else if (sum > 0) {\n                k--;\n            }\n            else {\n                vector<int> temp = {nums[i], nums[j], nums[k]};\n                ans.push_back(temp);\n                j++;\n                k--;\n                //skip the duplicates:\n                while (j < k && nums[j] == nums[j - 1]) j++;\n                while (j < k && nums[k] == nums[k + 1]) k--;\n            }\n        }\n    }\n    return ans.size();\n\n    return 0;\n}\n",
+        "programHash": "d7a1b807256ba86685ff7c2baf8a52680a8b0da64c1b7484a33a2f98c439f0ce",
+        "testcase": "T2",
+        "testcasePassed": 1
+    },
+    {
+        "timestamp": "2024-02-23 16:26:24",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    vector<vector<int>> ans;\n    sort(nums.begin(), nums.end());\n    for (int i = 0; i < n; i++) {\n        //remove duplicates:\n        if (i != 0 && nums[i] == nums[i - 1]) continue;\n\n        //moving 2 pointers:\n        int j = i + 1;\n        int k = n - 1;\n        while (j < k) {\n            int sum = nums[i] + nums[j] + nums[k];\n            if (sum < 0) {\n                j++;\n            }\n            else if (sum > 0) {\n                k--;\n            }\n            else {\n                vector<int> temp = {nums[i], nums[j], nums[k]};\n                ans.push_back(temp);\n                j++;\n                k--;\n                //skip the duplicates:\n                while (j < k && nums[j] == nums[j - 1]) j++;\n                while (j < k && nums[k] == nums[k + 1]) k--;\n            }\n        }\n    }\n    return ans.size();\n\n    return 0;\n}\n",
+        "programHash": "d7a1b807256ba86685ff7c2baf8a52680a8b0da64c1b7484a33a2f98c439f0ce",
+        "testcase": "T3",
+        "testcasePassed": 1
+    }
+]

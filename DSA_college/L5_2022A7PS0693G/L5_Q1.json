@@ -1,0 +1,107 @@
+[
+    {
+        "timestamp": "2024-02-23 16:18:09",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n\n    while (a < b) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        a++;\n        b--;\n        while (nums[a] == nums[a + 1]) {\n            a = a + 2;\n        }\n        while (nums[b] == nums[b - 1]) {\n            b = b - 2;\n        }\n    }\n    return count;\n}\n",
+        "programHash": "9f664ec05cfeb6dcdf8538b53d856ac40f10d53f96c3195539e1883f183fa1eb",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-23 16:19:02",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n\n    while (a < b - 1) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        a++;\n        b--;\n        while (nums[a] == nums[a + 1]) {\n            a = a + 2;\n        }\n        while (nums[b] == nums[b - 1]) {\n            b = b - 2;\n        }\n    }\n    return count;\n}\n",
+        "programHash": "50bb58f3637022864bbba637bacb12494fe546eed8ad78c4d87e4550a62b5117",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-23 16:19:59",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n\n    while (a < b - 1) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        \n        while (nums[a] == nums[a + 1]) {\n            a++;\n        }\n        while (nums[b] == nums[b - 1]) {\n            b++;\n        }\n        a++;\n        b--;\n    }\n    return count;\n}\n",
+        "programHash": "e5b3c447f2eb97f042edc911efaa98a6d8a71a5b4fd5c3e2958bd71f50cf1507",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-23 16:20:05",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n\n    while (a < b - 1) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        \n        while (nums[a] == nums[a + 1]) {\n            a++;\n        }\n        while (nums[b] == nums[b - 1]) {\n            b++;\n        }\n        a++;\n        b--;\n    }\n    return count;\n}\n",
+        "programHash": "e5b3c447f2eb97f042edc911efaa98a6d8a71a5b4fd5c3e2958bd71f50cf1507",
+        "testcase": "T2",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-23 16:20:57",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n\n    while (a < b - 1) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        \n        while (nums[a] == nums[a + 1]) {\n            a++;\n        }\n        while (nums[b] == nums[b - 1]) {\n            b--;\n        }\n        a++;\n        b--;\n    }\n    return count;\n}\n",
+        "programHash": "676bd5076019a1a315fdadcc3069bcd7a4a7427d1a0a902ad9f23b451f221a65",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-23 16:21:01",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n\n    while (a < b - 1) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        \n        while (nums[a] == nums[a + 1]) {\n            a++;\n        }\n        while (nums[b] == nums[b - 1]) {\n            b--;\n        }\n        a++;\n        b--;\n    }\n    return count;\n}\n",
+        "programHash": "676bd5076019a1a315fdadcc3069bcd7a4a7427d1a0a902ad9f23b451f221a65",
+        "testcase": "T2",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-23 16:21:50",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n\n    while (a < b - 1) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        \n        while (a < b + 1 && nums[a] == nums[a + 1]) {\n            a++;\n        }\n        while (a < b + 1 && nums[b] == nums[b - 1]) {\n            b--;\n        }\n        a++;\n        b--;\n    }\n    return count;\n}\n",
+        "programHash": "40e90c8d8e1ee04d9d1a4315f51f18d8b0a5126817269aa1f6ec2ff1fca96549",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-23 16:24:35",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n    bool flip = true;\n\n    while (a < b - 1) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        if (flip) {\n            while (a < b + 1 && nums[a] == nums[a + 1]) {\n                a++;\n            }\n            a++;\n            flip = false;\n        }\n        else {\n            while (a < b + 1 && nums[b] == nums[b - 1]) {\n                b--;\n            }\n            b--;\n            flip = true;\n        }\n        \n    }\n    return count;\n}\n",
+        "programHash": "9121f0663a562af0d887b5ad3e32fcfb8e7b40cd411d45825d23ccb0922dadd7",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-23 16:25:12",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n    bool flip = true;\n\n    while (a < b - 1) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        if (flip) {\n            while (nums[a] == nums[a + 1]) {\n                a++;\n            }\n            a++;\n            flip = false;\n        }\n        else {\n            while (nums[b] == nums[b - 1]) {\n                b--;\n            }\n            b--;\n            flip = true;\n        }\n        \n    }\n    return count;\n}\n",
+        "programHash": "48c4ed391827d26d716451e553cf55ddeebffe5127a5f75402d45ca230b3bcc0",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-23 16:28:19",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n    bool flip = true;\n\n    while (a < b - 1) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        if (flip) {\n            while (nums[a] == nums[a + 1]) {\n                a++;\n            }\n            a++;\n            flip = false;\n        }\n        else {\n            while (nums[b] == nums[b - 1]) {\n                b--;\n            }\n            b--;\n            flip = true;\n        }\n        \n    }\n    return count;\n}\n",
+        "programHash": "48c4ed391827d26d716451e553cf55ddeebffe5127a5f75402d45ca230b3bcc0",
+        "testcase": "T2",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-23 16:28:22",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n    bool flip = true;\n\n    while (a < b - 1) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        if (flip) {\n            while (nums[a] == nums[a + 1]) {\n                a++;\n            }\n            a++;\n            flip = false;\n        }\n        else {\n            while (nums[b] == nums[b - 1]) {\n                b--;\n            }\n            b--;\n            flip = true;\n        }\n        \n    }\n    return count;\n}\n",
+        "programHash": "48c4ed391827d26d716451e553cf55ddeebffe5127a5f75402d45ca230b3bcc0",
+        "testcase": "T3",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-23 16:31:11",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n    bool flip = true;\n\n    while (a < b - 1) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        if (flip) {\n            while (nums[a] == nums[a + 1]) {\n                a++;\n            }\n            a++;\n            flip = true;\n        }\n    }\n    return count;\n}\n",
+        "programHash": "37868da5ec5051d2120d83d708faace1dc42c75fdb642494d1752458f011fd17",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-23 16:49:25",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n    bool flip = true;\n\n    while (a < b - 1) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        \n            while (nums[a] == nums[a + 1]) {\n                a++;\n            }\n            a++;\n            flip = true;\n    }\n    return count;\n}\n",
+        "programHash": "78e8e04f4a62d14fc88885829cac81798307b86ef4bf5048f9bd855fa0ad0ad4",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-23 17:03:10",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n\n    while (a < b - 1) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        // if (nums[a] <= 0) {\n        //     while (nums[a] == nums[a + 1]) {\n        //         a++;\n        //     }\n        //     a++;\n        //     if(nums[a] > 0) a = 0;\n        // }\n        // else {\n        //     while (nums[b] == nums[b - 1]) {\n        //         b--;\n        //     }\n        //     b--;\n        // }\n        a++;\n        \n    }\n    return count;\n}\n",
+        "programHash": "165c80d9add06cf42cf3861d6aec203a7b37234766aad6c79546b1b944a925e5",
+        "testcase": "T1",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-23 17:10:07",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n\n    int a = 0;\n    int b = n - 1;\n    int c;\n    int count = 0;\n    bool flip = true;\n\n    while (true) {\n        for (c = a + 1; c < b; c++) {\n            if (nums[a] + nums[b] + nums[c] == 0) {\n                count++;\n            }\n        }\n        if (nums[a] <= 0 && flip) {\n            while (nums[a] == nums[a + 1]) {\n                a++;\n            }\n            a++;\n            if(nums[a] >= 0) a = 0; flip = false;\n        }\n        else {\n            while (nums[b] == nums[b - 1]) {\n                b--;\n            }\n            b--;\n            if (nums[b] <= 0) break;\n        }\n        \n    }\n    return count;\n}\n",
+        "programHash": "d196fa41159f44d9a09a3b86ecec8f0f4a498b389f24838718ca956677b39124",
+        "testcase": "T1",
+        "testcasePassed": 0
+    }
+]

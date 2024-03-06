@@ -1,0 +1,30 @@
+[
+    {
+        "timestamp": "2024-02-26 23:54:50",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    if(n<3) return 0;\n\n    sort(nums.begin(),nums.end());\n    int count = 0;\n    set<vector<int>> s;\n\n\n    for(int i = 0; i<n ; i++){\n        if(nums[i]>=0) break;\n\n        int j = i+1, k = n-1;\n\n        while(j<k){\n            int sum = nums[i]+nums[j]+nums[k];\n            if(sum == 0) {\n                s.insert({nums[i],nums[j],nums[k]});\n                j++; k--;\n            }\n            else if(sum>0) {\n                k--;\n            }\n            else j++;\n        }\n    }\n\n    for(auto i : s){\n        count++;\n    }\n    return count;\n}\n",
+        "programHash": "fe31b3013302bdbc25fbc72180c5e96dc0d907325533bfba72221994baa2db41",
+        "testcase": "T4",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-02-26 23:57:34",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    vector<vector<int>> ans;\n    sort(nums.begin(), nums.end());\n    for (int i = 0; i < n; i++) {\n      \n        if (i != 0 && nums[i] == nums[i - 1]) continue;\n\n       \n        int j = i + 1;\n        int k = n - 1;\n        while (j < k) {\n            int sum = nums[i] + nums[j] + nums[k];\n            if (sum < 0) {\n                j++;\n            }\n            else if (sum > 0) {\n                k--;\n            }\n            else {\n                vector<int> temp = {nums[i], nums[j], nums[k]};\n                ans.push_back(temp);\n                j++;\n                k--;\n              \n                while (j < k && nums[j] == nums[j - 1]) j++;\n                while (j < k && nums[k] == nums[k + 1]) k--;\n            }\n        }\n    }\n    return ans.size();\n\n    return 0;\n}\n",
+        "programHash": "d85a5ac854c4cd7eb9f540aef9f3432acb366d0031cd1570dc257ac1f7ad7a27",
+        "testcase": "T4",
+        "testcasePassed": 1
+    },
+    {
+        "timestamp": "2024-02-27 00:03:52",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    vector<vector<int>> ans;\n    sort(nums.begin(), nums.end());\n    for (int i = 0; i < n; i++) {\n      \n        if (i != 0 && nums[i] == nums[i - 1]) continue;\n\n       \n        int j = i + 1;\n        int k = n - 1;\n        while (j < k) {\n            int sum = nums[i] + nums[j] + nums[k];\n            if (sum < 0) {\n                j++;\n            }\n            else if (sum > 0) {\n                k--;\n            }\n            else {\n                vector<int> temp = {nums[i], nums[j], nums[k]};\n                ans.push_back(temp);\n                j++;\n                k--;\n              \n                while (j < k && nums[j] == nums[j - 1]) j++;\n                while (j < k && nums[k] == nums[k + 1]) k--;\n            }\n        }\n    }\n    return ans.size();\n\n    return 0;\n}\n",
+        "programHash": "d85a5ac854c4cd7eb9f540aef9f3432acb366d0031cd1570dc257ac1f7ad7a27",
+        "testcase": "T5",
+        "testcasePassed": 1
+    },
+    {
+        "timestamp": "2024-02-27 15:02:45",
+        "program": "#include<bits/stdc++.h>\nusing namespace std;\n\nint solve(vector<int>& nums)\n{\n    int n = nums.size();\n    vector<vector<int>> ans;\n    sort(nums.begin(), nums.end());\n    for (int i = 0; i < n; i++) {\n      \n        if (i != 0 && nums[i] == nums[i - 1]) continue;\n\n       \n        int j = i + 1;\n        int k = n - 1;\n        while (j < k) {\n            int sum = nums[i] + nums[j] + nums[k];\n            if (sum < 0) {\n                j++;\n            }\n            else if (sum > 0) {\n                k--;\n            }\n            else {\n                vector<int> temp = {nums[i], nums[j], nums[k]};\n                ans.push_back(temp);\n                j++;\n                k--;\n              \n                while (j < k && nums[j] == nums[j - 1]) j++;\n                while (j < k && nums[k] == nums[k + 1]) k--;\n            }\n        }\n    }\n    return ans.size();\n\n    return 0;\n}\n",
+        "programHash": "d85a5ac854c4cd7eb9f540aef9f3432acb366d0031cd1570dc257ac1f7ad7a27",
+        "testcase": "T1",
+        "testcasePassed": 1
+    }
+]
