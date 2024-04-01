@@ -1,4 +1,6 @@
-# Various stages through which I struggled and then eventually finally made it a success.
+# Pruning and Sparsity
+
+## Various stages through which I struggled and then eventually finally made it a success.
 
 - First experimented a lot with VGG models like VGG16, tried a lot of models and adjusting a lot of hyperparameters.
 

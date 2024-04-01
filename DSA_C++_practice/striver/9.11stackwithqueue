@@ -1,0 +1,334 @@
+class Stack {
+  queue < int > q;
+  public:
+    void Push(int x) {
+      int s = q.size();
+      q.push(x);
+      for (int i = 0; i < s; i++) {
+
+        q.push(q.front());
+        q.pop();
+      }
+    }
+  int Pop() {
+    int n = q.front();
+    q.pop();
+    return n;
+  }
+  int Top() {
+    return q.front();
+  }
+  int Size() {
+    return q.size();
+  }
+};
+
+int main() {
+  Stack s;
+  s.Push(3);
+  s.Push(2);
+  s.Push(4);
+  s.Push(1);
+  cout << "Top of the stack: " << s.Top() << endl;
+  cout << "Size of the stack before removing element: " << s.Size() << endl;
+  cout << "The deleted element is: " << s.Pop() << endl;
+  cout << "Top of the stack after removing element: " << s.Top() << endl;
+  cout << "Size of the stack after removing element: " << s.Size();
+
+}
+
+
+
+//queue using 2 stacks
+
+class MyQueue {
+  public:
+    stack < int > input, output;
+  /** Initialize your data structure here. */
+  MyQueue() {
+
+  }
+
+  /** Push element x to the back of queue. */
+  void push(int x) {
+    cout << "The element pushed is " << x << endl;
+    input.push(x);
+  }
+
+  /** Removes the element from in front of queue and returns that element. */
+  int pop() {
+    // shift input to output 
+    if (output.empty())
+      while (input.size())
+        output.push(input.top()), input.pop();
+
+    int x = output.top();
+    output.pop();
+    return x;
+  }
+
+  /** Get the front element. */
+  int top() {
+    // shift input to output 
+    if (output.empty())
+      while (input.size())
+        output.push(input.top()), input.pop();
+    return output.top();
+  }
+
+  int size() {
+    return (output.size() + input.size()); 
+  }
+
+};
+int main() {
+  MyQueue q;
+  q.push(3);
+  q.push(4);
+  cout << "The element poped is " << q.pop() << endl;
+  q.push(5);
+  cout << "The top of the queue is " << q.top() << endl;
+  cout << "The size of the queue is " << q.size() << endl;
+
+}
+
+
+
+//stack using linkedlist
+
+#include<iostream>
+using namespace std;
+
+struct stackNode {
+  int data;
+  stackNode * next;
+  int size;
+  stackNode(int d) {
+    data = d;
+    next = NULL;
+  }
+};
+struct stack {
+  stackNode * top;
+  int size;
+  stack() {
+    top = NULL;
+    size = 0;
+  }
+  void stackPush(int x) {
+    stackNode * element = new stackNode(x);
+    element -> next = top;
+    top = element;
+    cout << "Element pushed" << "\n";
+    size++;
+  }
+  int stackPop() {
+    if (top == NULL) {
+      return -1;
+    }
+    int topData = top -> data;
+    stackNode * temp = top;
+    top = top -> next;
+    delete temp;
+    size--;
+    return topData;
+  }
+  int stackSize() {
+    return size;
+  }
+  bool stackIsEmpty() {
+    return top == NULL;
+  }
+  int stackPeek() {
+    if (top == NULL) return -1;
+    return top -> data;
+  }
+  void printStack() {
+    stackNode * current = top;
+    while (current != NULL) {
+      cout << current -> data << " ";
+      current = current -> next;
+    }
+  }
+};
+int main() {
+  stack s;
+  s.stackPush(10);
+  cout << "Element popped: " << s.stackPop() << "\n";
+  cout << "Stack size: " << s.stackSize() << "\n";
+  cout <<"Stack empty or not? "<<s.stackIsEmpty()<<"\n";
+  cout << "stack's top element: " << s.stackPeek() << "\n";
+  return 0;
+}
+
+
+
+//queue using linkedlist
+
+#include<bits/stdc++.h> 
+using namespace std;
+
+class QueueNode
+{
+ public: 
+    int val;
+    QueueNode *next;
+    QueueNode(int data)
+    {
+       val = data;
+       next = nullptr;
+    }
+};  
+QueueNode *Front = nullptr, *Rare = nullptr;
+
+class Queue
+{
+public:
+    int size = 0;
+    bool Empty();
+    void Enqueue(int value);
+    void Dequeue();
+    int Peek();
+};  
+bool Queue ::  Empty()
+{
+    return Front == nullptr;
+}  
+int Queue :: Peek()
+{
+    if(Empty())  
+     {  cout<<"Queue is Empty"<<endl;
+        return -1;
+     } 
+    else 
+      return Front->val;
+}   
+void Queue :: Enqueue(int value)
+{
+    QueueNode *Temp;
+    Temp = new QueueNode(value); 
+    if (Temp == nullptr)  //When heap exhausted 
+        cout << "Queue is Full" << endl;
+    else
+    {
+        if (Front == nullptr)
+        {
+            Front = Temp;
+            Rare = Temp;
+        } 
+        else
+        {
+            Rare->next = Temp;
+            Rare = Temp;
+        }
+        cout<<value <<" Inserted into Queue "<<endl;
+        size++;
+    } 
+}      
+void Queue :: Dequeue() 
+{
+    if (Front == nullptr) 
+        cout << "Queue is Empty" << endl;
+    else
+    { 
+        cout<<Front->val <<" Removed From Queue"<<endl;
+        QueueNode *Temp = Front;
+        Front = Front->next;
+        delete Temp;
+        size--;
+    }  
+}   
+int main()
+
+{
+    Queue Q;
+    Q.Enqueue(10);
+    Q.Enqueue(20);
+    Q.Enqueue(30);
+    Q.Enqueue(40);
+    Q.Enqueue(50);
+    Q.Dequeue();
+    cout<<"The size of the Queue is "<<Q.size<<endl;
+    cout<<"The Peek element of the Queue is "<<Q.Peek()<<endl;
+    return 0;
+}  
+
+
+
+//balanced parenthesis
+
+bool isValid(string s) {
+        stack<char>st; 
+        for(auto it: s) {
+            if(it=='(' || it=='{' || it == '[') st.push(it); 
+            else {
+                if(st.size() == 0) return false; 
+                char ch = st.top(); 
+                st.pop(); 
+                if((it == ')' and ch == '(') or  (it == ']' and ch == '[') or (it == '}' and ch == '{')) continue;
+                else return false;
+            }
+        
+        return st.empty(); 
+    }
+int main()
+{
+    string s="()[{}()]";
+    if(isValid(s))
+    cout<<"True"<<endl;
+    else
+    cout<<"False"<<endl;
+}
+
+
+
+//implement min stack
+
+
+class MinStack {
+  stack < long long > st;
+  long long mini;
+  public:
+    /** initialize your data structure here. */
+    MinStack() {
+      while (st.empty() == false) st.pop();
+      mini = INT_MAX;
+    }
+
+  void push(int value) {
+    long long val = Long.valuevalue;
+    if (st.empty()) {
+      mini = val;
+      st.push(val);
+    } else {
+      if (val < mini) {
+        st.push(2 *val*1LL - mini);
+        mini = val;
+      } else {
+        st.push(val);
+      }
+    }
+  }
+
+  void pop() {
+    if (st.empty()) return;
+    long long el = st.top();
+    st.pop();
+
+    if (el < mini) {
+      mini = 2 * mini - el;
+    }
+  }
+
+  int top() {
+    if (st.empty()) return -1;
+
+    long long el = st.top();
+    if (el < mini) return mini;
+    return el;
+  }
+
+  int getMin() {
+    return mini;
+  }
+};

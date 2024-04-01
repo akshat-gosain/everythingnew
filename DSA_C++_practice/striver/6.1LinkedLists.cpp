@@ -187,6 +187,396 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
     return dummy->next;
 }
 
+ListNode* detectCycle(ListNode* head) {
+    ListNode* slow = head;
+    ListNode* fast = head;
+
+    while (fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if (slow == fast) {
+            // Cycle detected
+            ListNode* meetingPoint = head;
+            while (meetingPoint != slow) {
+                meetingPoint = meetingPoint->next;
+                slow = slow->next;
+            }
+            return meetingPoint; // Return the start of the cycle
+        }
+    }
+
+    // No cycle found
+    return nullptr;
+}
+
+bool isPalindrome(ListNode* head) {
+    ListNode* slow = head;
+    ListNode* fast = head;
+    while(fast!=nullptr && fast->next!=nullptr){
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    ListNode* prev = nullptr;
+    ListNode* curr = slow;
+    ListNode* next = nullptr;
+    while(curr!=nullptr){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    ListNode* first = head;
+    ListNode* second = prev;
+    while(second!=nullptr){
+        if(first->val != second->val){
+            return false;
+        }
+        first = first->next;
+        second = second->next;
+    }
+    return true;
+}
+
+ListNode* mergeKlists(vector<ListNode*> &lists){
+    priority_queue<int, vector<int>, greater<int>> pq;
+    for(int i=0; i<lists.size(); i++){
+        ListNode* temp = lists[i];
+        while(temp!=nullptr){
+            pq.push(temp->val);
+            temp = temp->next;
+        }
+    }
+    ListNode* dummy = new ListNode(0);
+    ListNode* temp = dummy;
+    while(!pq.empty()){
+        ListNode* newNode = new ListNode(pq.top());
+        pq.pop();
+        temp->next = newNode;
+        temp = temp->next;
+    }
+    return dummy->next;
+}
+
+class LRUCache {
+  public:
+    class node {
+      public:
+        int key;
+      int val;
+      node * next;
+      node * prev;
+      node(int _key, int _val) {
+        key = _key;
+        val = _val;
+      }
+    };
+
+  node * head = new node(-1, -1);
+  node * tail = new node(-1, -1);
+
+  int cap;
+  unordered_map < int, node * > m;
+
+  LRUCache(int capacity) {
+    cap = capacity;
+    head -> next = tail;
+    tail -> prev = head;
+  }
+
+  void addnode(node * newnode) {
+    node * temp = head -> next;
+    newnode -> next = temp;
+    newnode -> prev = head;
+    head -> next = newnode;
+    temp -> prev = newnode;
+  }
+
+  void deletenode(node * delnode) {
+    node * delprev = delnode -> prev;
+    node * delnext = delnode -> next;
+    delprev -> next = delnext;
+    delnext -> prev = delprev;
+  }
+
+  int get(int key_) {
+    if (m.find(key_) != m.end()) {
+      node * resnode = m[key_];
+      int res = resnode -> val;
+      m.erase(key_);
+      deletenode(resnode);
+      addnode(resnode);
+      m[key_] = head -> next;
+      return res;
+    }
+
+    return -1;
+  }
+
+  void put(int key_, int value) {
+    if (m.find(key_) != m.end()) {
+      node * existingnode = m[key_];
+      m.erase(key_);
+      deletenode(existingnode);
+    }
+    if (m.size() == cap) {
+      m.erase(tail -> prev -> key);
+      deletenode(tail -> prev);
+    }
+
+    addnode(new node(key_, value));
+    m[key_] = head -> next;
+  }
+};
+
+class AllOne{
+    public:
+    AllOne(){
+        head = new Node(0);
+        tail = new Node(0);
+        head->next = tail;
+        tail->prev = head;
+    }
+    void inc(string key){
+        if(m.find(key) == m.end()){
+            m[key] = new Node(0);
+            m[key]->keys.insert(key);
+            insert(m[key], head);
+        }
+        Node* curr = m[key];
+        Node* next = curr->next;
+        if(next == tail || next->val > curr->val+1){
+            Node* newnode = new Node(curr->val+1);
+            insert(newnode, curr);
+        }
+        next = curr->next;
+        next->keys.insert(key);
+        m[key] = next;
+        curr->keys.erase(key);
+        if(curr->keys.size() == 0){
+            remove(curr);
+        }
+    }
+    void dec(string key){
+        if(m.find(key) == m.end()){
+            return;
+        }
+        Node* curr = m[key];
+        Node* prev = curr->prev;
+        m.erase(key);
+        if(curr->val > 1){
+            if(curr == head || prev->val < curr->val-1){
+                Node* newnode = new Node(curr->val-1);
+                insert(newnode, prev);
+            }
+            prev = curr->prev;
+            prev->keys.insert(key);
+            m[key] = prev;
+        }
+        curr->keys.erase(key);
+        if(curr->keys.size() == 0){
+            remove(curr);
+        }
+    }
+    string getMaxKey(){
+        return tail->prev == head ? "" : *(tail->prev->keys.begin());
+    
+}
+    string getMinKey(){
+        return head->next == tail ? "" : *(head->next->keys.begin());
+    }
+    private:
+    class Node{
+        public:
+        int val;
+        unordered_set<string> keys;
+        Node* prev;
+        Node* next;
+        Node(int val){
+            this->val = val;
+        }
+    };
+    Node* head;
+    Node* tail;
+    unordered_map<string, Node*> m;
+    void insert(Node* newnode, Node* prev){
+        Node* next = prev->next;
+        newnode->next = next;
+        newnode->prev = prev;
+        prev->next = newnode;
+        next->prev = newnode;
+    }
+    void remove(Node* node){
+        Node* prev = node->prev;
+        Node* next = node->next;
+        prev->next = next;
+        next->prev = prev;
+        delete node;
+    }
+};
+
+
+ListNode* removeNthFromEnd(ListNode* head, int n) {
+    ListNode* dummy = new ListNode(0);
+    dummy->next = head;
+    ListNode* slow = dummy;
+    ListNode* fast = dummy;
+    for(int i=1; i<=n+1; i++){
+        fast = fast->next;
+    }
+    while(fast!=nullptr){
+        slow = slow->next;
+        fast = fast->next;
+    }
+    slow->next = slow->next->next;
+    return dummy->next;
+}
+
+ListNode* swapPairs(ListNode* head) {
+    ListNode* dummy = new ListNode(0);
+    dummy->next = head;
+    ListNode* temp = dummy;
+    while(temp->next!=nullptr && temp->next->next!=nullptr){
+        ListNode* first = temp->next;
+        ListNode* second = temp->next->next;
+        first->next = second->next;
+        temp->next = second;
+        second->next = first;
+        temp = first;
+    }
+    return dummy->next;
+}
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+ListNode* reverseKgroup(ListNode* head, int k){
+    ListNode* dummy = new ListNode(0);
+    dummy->next = head;
+    ListNode* begin = dummy;
+    int i = 0;
+    while(head!=nullptr){
+        i++;
+        if(i%k == 0){
+            begin = reverse(begin, head->next);
+            head = begin->next;
+        } else {
+            head = head->next;
+        }
+    }
+    return dummy->next;
+
+}
+
+ListNode* reverse(ListNode* begin, ListNode* end){
+    ListNode* prev = begin;
+    ListNode* curr = begin->next;
+    ListNode* first = curr;
+    while(curr!=end){
+        ListNode* next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    begin->next = prev;
+    first->next = curr;
+    return first;
+}
+
+ListNode* deleteDuplicates(ListNode* head) {
+    ListNode* dummy = new ListNode(0);
+    dummy->next = head;
+    ListNode* temp = dummy;
+    while(temp->next!=nullptr && temp->next->next!=nullptr){
+        if(temp->next->val == temp->next->next->val){
+            int val = temp->next->val;
+            while(temp->next!=nullptr && temp->next->val == val){
+                temp->next = temp->next->next;
+            }
+        } else {
+            temp = temp->next;
+        }
+    }
+    return dummy->next;
+}
+
+ListNode* rotateRight(ListNode* head, int k) {
+    if(head == nullptr || head->next == nullptr){
+        return head;
+    }
+    int n = 1;
+    ListNode* temp = head;
+    while(temp->next!=nullptr){
+        temp = temp->next;
+        n++;
+    }
+    temp->next = head;
+    k = k%n;
+    k = n-k;
+    while(k--){
+        temp = temp->next;
+    }
+    head = temp->next;
+    temp->next = nullptr;
+    return head;
+}
+
+
+/*
+ * Definition for linked list.
+ * class Node {
+ *  public:
+ *		int data;
+ *		Node *next;
+ * 		Node *child;
+ *		Node() : data(0), next(nullptr), child(nullptr){};
+ *		Node(int x) : data(x), next(nullptr), child(nullptr) {}
+ *		Node(int x, Node *next, Node *child) : data(x), next(next), child(child) {}
+ * };
+ */
+
+// /Sample Input 1 :
+// 4
+// 3
+// 1 2 3
+// 3
+// 8 10 15
+// 2
+// 18 22
+// 1
+// 29
+
+// Sample Output 1 :
+//1 2 3 8 10 15 18 22 29
+
+Node* flattenLinkedList(Node* head){
+    Node* temp = head;
+    while(temp->next!=nullptr){
+        temp = temp->next;
+    }
+    Node* last = temp;
+    while(head!=last){
+        if(head->child!=nullptr){
+            temp->next = head->child;
+            Node* temp1 = head->child;
+            while(temp1->next!=nullptr){
+                temp1 = temp1->next;
+            }
+            last = temp1;
+        }
+        head = head->next;
+    }
+    return head;
+}
+
 int main(){
     int n;
     cin >> n;
