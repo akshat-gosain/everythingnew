@@ -75,6 +75,17 @@ vector<int> dfsOfGraphRecursive(int V, vector<int> adj[]){
     return ls;
 }
 
+vector<vector<int>> printGraph(int V, vector<pair<int,int>>edges){
+    vector<vector<int>> adjedges(V);
+    for(int i=0;i<edges.size();i++){
+        int u = edges[i].first;
+        int v = edges[i].second;
+        adjedges[u].push_back(v);
+        adjedges[v].push_back(u);
+    }
+    return adjedges;
+}
+
 
 int main(){
     int n,m;
