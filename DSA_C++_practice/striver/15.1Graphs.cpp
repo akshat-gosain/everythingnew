@@ -13,7 +13,6 @@ void addEdge(vector<int> adj[], int u, int v){
 }
 
 vector<int> bfsOfGraph(int V, vector<int> adj[]){
-    vector<int> bfs;
     vector<int> vis(V+1,0);
     vis[0]=1;
     queue<int> q;
