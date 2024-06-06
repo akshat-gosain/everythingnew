@@ -1,0 +1,86 @@
+[
+    {
+        "timestamp": "2024-04-20 22:31:40",
+        "program": "#include <bits/stdc++.h>\n// #include <iostream>\n// #include <vector>\n// #include <queue>\n#include \"header.h\"\nusing namespace std;\nint maxSize = -1;\nbool flag = true;\n\nvoid number(Node* root, int &count){\n    if(root==NULL) return;\n    count++;\n    number(root->left, count);\n    number(root->right, count);\n}\n\nbool checkBST(Node* root, int low, int high){\n    if(root==NULL) return true;\n    int val = root->data;\n    if(val<low || val>high) return false;\n    return (checkBST(root->left,low, val-1 ) && checkBST(root->right, val+1, high));\n}\n\nvoid traverse(Node* root){\n    \n    if(root==NULL) return;\n    int val=root->data;\n    if(checkBST(root, INT_MIN, INT_MAX)){\n        int count = 0;\n        number(root, count);\n        maxSize=max(maxSize, count);\n    }\n    else{\n        traverse(root->left);\n        traverse(root->right);\n    }\n}\n\nint solve(Node *root)\n{\n    traverse(root);\n    return maxSize;\n}\n",
+        "programHash": "2f96f632758d90ea6569f787fd3ff04bd84eee54690f80ea31dce979effa9316",
+        "testcase": "T4",
+        "testcasePassed": 1
+    },
+    {
+        "timestamp": "2024-04-20 22:31:48",
+        "program": "#include <bits/stdc++.h>\n// #include <iostream>\n// #include <vector>\n// #include <queue>\n#include \"header.h\"\nusing namespace std;\nint maxSize = -1;\nbool flag = true;\n\nvoid number(Node* root, int &count){\n    if(root==NULL) return;\n    count++;\n    number(root->left, count);\n    number(root->right, count);\n}\n\nbool checkBST(Node* root, int low, int high){\n    if(root==NULL) return true;\n    int val = root->data;\n    if(val<low || val>high) return false;\n    return (checkBST(root->left,low, val-1 ) && checkBST(root->right, val+1, high));\n}\n\nvoid traverse(Node* root){\n    \n    if(root==NULL) return;\n    int val=root->data;\n    if(checkBST(root, INT_MIN, INT_MAX)){\n        int count = 0;\n        number(root, count);\n        maxSize=max(maxSize, count);\n    }\n    else{\n        traverse(root->left);\n        traverse(root->right);\n    }\n}\n\nint solve(Node *root)\n{\n    traverse(root);\n    return maxSize;\n}\n",
+        "programHash": "2f96f632758d90ea6569f787fd3ff04bd84eee54690f80ea31dce979effa9316",
+        "testcase": "T5",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-04-20 22:31:58",
+        "program": "#include <bits/stdc++.h>\n// #include <iostream>\n// #include <vector>\n// #include <queue>\n#include \"header.h\"\nusing namespace std;\nint maxSize = -1;\nbool flag = true;\n\nvoid number(Node* root, int &count){\n    if(root==NULL) return;\n    count++;\n    number(root->left, count);\n    number(root->right, count);\n}\n\nbool checkBST(Node* root, int low, int high){\n    if(root==NULL) return true;\n    int val = root->data;\n    if(val<low || val>high) return false;\n    return (checkBST(root->left,low, val-1 ) && checkBST(root->right, val+1, high));\n}\n\nvoid traverse(Node* root){\n    \n    if(root==NULL) return;\n    int val=root->data;\n    if(checkBST(root, INT_MIN, INT_MAX)){\n        int count = 0;\n        number(root, count);\n        maxSize=max(maxSize, count);\n    }\n    else{\n        traverse(root->left);\n        traverse(root->right);\n    }\n}\n\nint solve(Node *root)\n{\n    traverse(root);\n    return maxSize;\n}\n",
+        "programHash": "2f96f632758d90ea6569f787fd3ff04bd84eee54690f80ea31dce979effa9316",
+        "testcase": "T6",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-04-20 22:33:09",
+        "program": "#include <bits/stdc++.h>\n// #include <iostream>\n// #include <vector>\n// #include <queue>\n#include \"header.h\"\nusing namespace std;\nint maxSize = -1;\nbool flag = true;\n\nvoid number(Node* root, int &count){\n    if(root==NULL) return;\n    count++;\n    number(root->left, count);\n    number(root->right, count);\n}\n\nbool checkBST(Node* root, int low, int high){\n    if(root==NULL) return true;\n    int val = root->data;\n    if(val<=low || val>=high) return false;\n    return (checkBST(root->left,low, val-1 ) && checkBST(root->right, val+1, high));\n}\n\nvoid traverse(Node* root){\n    \n    if(root==NULL) return;\n    int val=root->data;\n    if(checkBST(root, INT_MIN, INT_MAX)){\n        int count = 0;\n        number(root, count);\n        maxSize=max(maxSize, count);\n    }\n    else{\n        traverse(root->left);\n        traverse(root->right);\n    }\n}\n\nint solve(Node *root)\n{\n    traverse(root);\n    return maxSize;\n}\n",
+        "programHash": "768a37aa8325a1ff2fe0320e75de380abaecbb0d7e07f9b32ae2e8aa27096550",
+        "testcase": "T6",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-04-20 22:33:15",
+        "program": "#include <bits/stdc++.h>\n// #include <iostream>\n// #include <vector>\n// #include <queue>\n#include \"header.h\"\nusing namespace std;\nint maxSize = -1;\nbool flag = true;\n\nvoid number(Node* root, int &count){\n    if(root==NULL) return;\n    count++;\n    number(root->left, count);\n    number(root->right, count);\n}\n\nbool checkBST(Node* root, int low, int high){\n    if(root==NULL) return true;\n    int val = root->data;\n    if(val<=low || val>=high) return false;\n    return (checkBST(root->left,low, val-1 ) && checkBST(root->right, val+1, high));\n}\n\nvoid traverse(Node* root){\n    \n    if(root==NULL) return;\n    int val=root->data;\n    if(checkBST(root, INT_MIN, INT_MAX)){\n        int count = 0;\n        number(root, count);\n        maxSize=max(maxSize, count);\n    }\n    else{\n        traverse(root->left);\n        traverse(root->right);\n    }\n}\n\nint solve(Node *root)\n{\n    traverse(root);\n    return maxSize;\n}\n",
+        "programHash": "768a37aa8325a1ff2fe0320e75de380abaecbb0d7e07f9b32ae2e8aa27096550",
+        "testcase": "T5",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-04-20 22:33:34",
+        "program": "#include <bits/stdc++.h>\n// #include <iostream>\n// #include <vector>\n// #include <queue>\n#include \"header.h\"\nusing namespace std;\nint maxSize = -1;\nbool flag = true;\n\nvoid number(Node* root, int &count){\n    if(root==NULL) return;\n    count++;\n    number(root->left, count);\n    number(root->right, count);\n}\n\nbool checkBST(Node* root, int low, int high){\n    if(root==NULL) return true;\n    int val = root->data;\n    if(val<low || val>high) return false;\n    return (checkBST(root->left,low, val ) && checkBST(root->right, val, high));\n}\n\nvoid traverse(Node* root){\n    \n    if(root==NULL) return;\n    int val=root->data;\n    if(checkBST(root, INT_MIN, INT_MAX)){\n        int count = 0;\n        number(root, count);\n        maxSize=max(maxSize, count);\n    }\n    else{\n        traverse(root->left);\n        traverse(root->right);\n    }\n}\n\nint solve(Node *root)\n{\n    traverse(root);\n    return maxSize;\n}\n",
+        "programHash": "4d2631c8a544b9bc1c66839fd49800f612ecb241adf44f733bc861577e718f6c",
+        "testcase": "T5",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-04-20 22:40:23",
+        "program": "// #include <bits/stdc++.h>\n// #include <iostream>\n// #include <vector>\n// #include <queue>\n#include \"header.h\"\nusing namespace std;\n\n\nint maxm = 0;\nvoid countNodes(Node* root, int &cnt){\n    if(root == NULL){\n        return;\n    }\n    cnt++;\n    countNodes(root->left, cnt);\n    countNodes(root->right, cnt);\n}\n\nbool checkValid(Node* root, int min, int max){\n    if(root == NULL){\n        return true;\n    }\n    if(root->data <= min || root->data >= max){\n        return false;\n    }\n    return checkValid(root->left, min, root->data) && checkValid(root->right, root->data, max);\n}\n\nint solve(Node *root)\n{\n    if(root == NULL){\n        return maxm;\n    }\n    if(checkValid(root, INT_MIN, INT_MAX) == true){\n        int cnt = 0;\n        countNodes(root, cnt);\n        maxm = max(maxm, cnt);\n    }\n    else{\n        solve(root->left);\n        solve(root->right);\n    }\n}\n",
+        "programHash": "cabfffa05b86ffce86f3d34602667b995c4895c416bc528c5f2ad99aa5f4f5d3",
+        "testcase": "T4",
+        "testcasePassed": 1
+    },
+    {
+        "timestamp": "2024-04-20 22:40:41",
+        "program": "// #include <bits/stdc++.h>\n// #include <iostream>\n// #include <vector>\n// #include <queue>\n#include \"header.h\"\nusing namespace std;\n\n\nint maxm = 0;\nvoid countNodes(Node* root, int &cnt){\n    if(root == NULL){\n        return;\n    }\n    cnt++;\n    countNodes(root->left, cnt);\n    countNodes(root->right, cnt);\n}\n\nbool checkValid(Node* root, int min, int max){\n    if(root == NULL){\n        return true;\n    }\n    if(root->data <= min || root->data >= max){\n        return false;\n    }\n    return checkValid(root->left, min, root->data) && checkValid(root->right, root->data, max);\n}\n\nint solve(Node *root)\n{\n    if(root == NULL){\n        return maxm;\n    }\n    if(checkValid(root, INT_MIN, INT_MAX) == true){\n        int cnt = 0;\n        countNodes(root, cnt);\n        maxm = max(maxm, cnt);\n    }\n    else{\n        solve(root->left);\n        solve(root->right);\n    }\n}\n",
+        "programHash": "cabfffa05b86ffce86f3d34602667b995c4895c416bc528c5f2ad99aa5f4f5d3",
+        "testcase": "T5",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-04-20 22:40:45",
+        "program": "// #include <bits/stdc++.h>\n// #include <iostream>\n// #include <vector>\n// #include <queue>\n#include \"header.h\"\nusing namespace std;\n\n\nint maxm = 0;\nvoid countNodes(Node* root, int &cnt){\n    if(root == NULL){\n        return;\n    }\n    cnt++;\n    countNodes(root->left, cnt);\n    countNodes(root->right, cnt);\n}\n\nbool checkValid(Node* root, int min, int max){\n    if(root == NULL){\n        return true;\n    }\n    if(root->data <= min || root->data >= max){\n        return false;\n    }\n    return checkValid(root->left, min, root->data) && checkValid(root->right, root->data, max);\n}\n\nint solve(Node *root)\n{\n    if(root == NULL){\n        return maxm;\n    }\n    if(checkValid(root, INT_MIN, INT_MAX) == true){\n        int cnt = 0;\n        countNodes(root, cnt);\n        maxm = max(maxm, cnt);\n    }\n    else{\n        solve(root->left);\n        solve(root->right);\n    }\n}\n",
+        "programHash": "cabfffa05b86ffce86f3d34602667b995c4895c416bc528c5f2ad99aa5f4f5d3",
+        "testcase": "T6",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-04-20 22:41:56",
+        "program": "// #include <bits/stdc++.h>\n// #include <iostream>\n// #include <vector>\n// #include <queue>\n#include \"header.h\"\nusing namespace std;\n\n\nint maxm = 0;\nvoid countNodes(Node* root, int &cnt){\n    if(root == NULL){\n        return;\n    }\n    cnt++;\n    countNodes(root->left, cnt);\n    countNodes(root->right, cnt);\n}\n\nbool checkValid(Node* root, int min, int max){\n    if(root == NULL){\n        return true;\n    }\n    if(root->data < min || root->data > max){\n        return false;\n    }\n    return checkValid(root->left, min, root->data) && checkValid(root->right, root->data, max);\n}\n\nint solve(Node *root)\n{\n    if(root == NULL){\n        return maxm;\n    }\n    if(checkValid(root, INT_MIN, INT_MAX) == true){\n        int cnt = 0;\n        countNodes(root, cnt);\n        maxm = max(maxm, cnt);\n    }\n    else{\n        solve(root->left);\n        solve(root->right);\n    }\n}\n",
+        "programHash": "32cd7a4dadbfdf154b78f7893de79ef4c25530a278ec135af23620fb39de80dd",
+        "testcase": "T6",
+        "testcasePassed": 0
+    },
+    {
+        "timestamp": "2024-04-20 22:42:04",
+        "program": "// #include <bits/stdc++.h>\n// #include <iostream>\n// #include <vector>\n// #include <queue>\n#include \"header.h\"\nusing namespace std;\n\n\nint maxm = 0;\nvoid countNodes(Node* root, int &cnt){\n    if(root == NULL){\n        return;\n    }\n    cnt++;\n    countNodes(root->left, cnt);\n    countNodes(root->right, cnt);\n}\n\nbool checkValid(Node* root, int min, int max){\n    if(root == NULL){\n        return true;\n    }\n    if(root->data < min || root->data > max){\n        return false;\n    }\n    return checkValid(root->left, min, root->data) && checkValid(root->right, root->data, max);\n}\n\nint solve(Node *root)\n{\n    if(root == NULL){\n        return maxm;\n    }\n    if(checkValid(root, INT_MIN, INT_MAX) == true){\n        int cnt = 0;\n        countNodes(root, cnt);\n        maxm = max(maxm, cnt);\n    }\n    else{\n        solve(root->left);\n        solve(root->right);\n    }\n}\n",
+        "programHash": "32cd7a4dadbfdf154b78f7893de79ef4c25530a278ec135af23620fb39de80dd",
+        "testcase": "T4",
+        "testcasePassed": 1
+    },
+    {
+        "timestamp": "2024-04-20 22:42:08",
+        "program": "// #include <bits/stdc++.h>\n// #include <iostream>\n// #include <vector>\n// #include <queue>\n#include \"header.h\"\nusing namespace std;\n\n\nint maxm = 0;\nvoid countNodes(Node* root, int &cnt){\n    if(root == NULL){\n        return;\n    }\n    cnt++;\n    countNodes(root->left, cnt);\n    countNodes(root->right, cnt);\n}\n\nbool checkValid(Node* root, int min, int max){\n    if(root == NULL){\n        return true;\n    }\n    if(root->data < min || root->data > max){\n        return false;\n    }\n    return checkValid(root->left, min, root->data) && checkValid(root->right, root->data, max);\n}\n\nint solve(Node *root)\n{\n    if(root == NULL){\n        return maxm;\n    }\n    if(checkValid(root, INT_MIN, INT_MAX) == true){\n        int cnt = 0;\n        countNodes(root, cnt);\n        maxm = max(maxm, cnt);\n    }\n    else{\n        solve(root->left);\n        solve(root->right);\n    }\n}\n",
+        "programHash": "32cd7a4dadbfdf154b78f7893de79ef4c25530a278ec135af23620fb39de80dd",
+        "testcase": "T5",
+        "testcasePassed": 0
+    }
+]

@@ -1,0 +1,1 @@
+{"name":"Local: 948_Div2","url":"/home/akshat_gosain/Compcoding/948_Div2.cpp","tests":[{"id":1716734634808,"input":"3\n3 3\n2 4\n5 3","output":"YES\nNO\nYES"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/akshat_gosain/Compcoding/948_Div2.cpp","group":"local","local":true}
